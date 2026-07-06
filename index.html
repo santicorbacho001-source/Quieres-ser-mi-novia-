@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Quieres ser mi novia? ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(135deg,#ffb6c1,#ffe4e1);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+
+.card{
+    background:#fff;
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    width:90%;
+    max-width:450px;
+}
+
+.flores{
+    font-size:60px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#e91e63;
+    margin-bottom:25px;
+}
+
+.botones{
+    position:relative;
+    height:120px;
+}
+
+button{
+    padding:15px 35px;
+    border:none;
+    border-radius:12px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+#si{
+    background:#ff4081;
+    color:white;
+    cursor:pointer;
+}
+
+#no{
+    background:#888;
+    color:white;
+    position:absolute;
+    left:220px;
+    top:0;
+    cursor:pointer;
+}
+
+#mensaje{
+    margin-top:25px;
+    font-size:22px;
+    color:#e91e63;
+    font-weight:bold;
+}
+
+.corazon{
+    position:absolute;
+    color:red;
+    animation:caer linear forwards;
+}
+
+@keyframes caer{
+    from{
+        transform:translateY(-10vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="flores">🌹🌸🌷💐🌺</div>
+
+    <h1>¿Quieres ser mi novia? ❤️</h1>
+
+    <div class="botones">
+        <button id="si">Sí 💖</button>
+        <button id="no">No 💔</button>
+    </div>
+
+    <div id="mensaje"></div>
+</div>
+
+<script>
+const botonNo = document.getElementById("no");
+const botonSi = document.getElementById("si");
+
+function moverNo(){
+    botonNo.style.left = Math.random()*220 + "px";
+    botonNo.style.top = Math.random()*70 + "px";
+}
+
+botonNo.addEventListener("mouseover", moverNo);
+botonNo.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    moverNo();
+});
+
+botonSi.addEventListener("click", function(){
+    document.body.innerHTML = `
+    <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(135deg,#ffb6c1,#ffe4e1);font-family:Arial;text-align:center;">
+        <div>
+            <h1 style="font-size:55px;color:#e91e63;">❤️ ¡Sabía que dirías que sí! ❤️</h1>
+            <h2>🌹 Desde hoy comienza una historia muy bonita. 🥰</h2>
+        </div>
+    </div>`;
+});
+
+function crearCorazon(){
+    const corazon = document.createElement("div");
+    corazon.className = "corazon";
+    corazon.innerHTML = "❤️";
+    corazon.style.left = Math.random()*100 + "vw";
+    corazon.style.fontSize = (20 + Math.random()*25) + "px";
+    corazon.style.animationDuration = (3 + Math.random()*3) + "s";
+    document.body.appendChild(corazon);
+
+    setTimeout(()=>corazon.remove(),6000);
+}
+
+setInterval(crearCorazon,300);
+</script>
+
+</body>
+</html>
